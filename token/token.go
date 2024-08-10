@@ -51,13 +51,13 @@ const (
 )
 
 var keywords = map[string]TokenType{
-	"fn":  FUNCTION,
-	"let": LET,
-	// "true":   TRUE,
-	// "false":  FALSE,
-	// "if":     IF,
-	// "else":   ELSE,
-	// "return": RETURN,
+	"fn":     FUNCTION,
+	"let":    LET,
+	"true":   TRUE,
+	"false":  FALSE,
+	"if":     IF,
+	"else":   ELSE,
+	"return": RETURN,
 }
 
 // Checks the keywords table to see whether the given identifier is in fact a keyword.
