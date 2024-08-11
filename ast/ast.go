@@ -71,3 +71,20 @@ func (i *Identifier) expressionNode() {}
 
 // TokenLiteral returns the literal value of the identifier's token, which is used mainly for debugging.
 func (i *Identifier) TokenLiteral() string { return i.Token.Literal }
+
+// ReturnStatement represents a 'return' statement in the AST (Abstract Syntax Tree).
+// It contains the 'return' token and the expression to be returned.
+type ReturnStatement struct {
+	Token       token.Token // The 'return' token.
+	ReturnValue Expression  // The expression to be returned by the statement.
+}
+
+// statementNode is a dummy method that helps the Go compiler recognize this as a Statement node.
+// This method is required to fulfill the Statement interface.
+func (rs *ReturnStatement) statementNode() {}
+
+// TokenLiteral returns the literal value of the 'return' token.
+// This method is required to fulfill the Node interface and is used mainly for debugging.
+func (rs *ReturnStatement) TokenLiteral() string {
+	return rs.Token.Literal
+}

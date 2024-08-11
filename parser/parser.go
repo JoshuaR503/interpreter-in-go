@@ -85,9 +85,28 @@ func (p *Parser) parseStatement() ast.Statement {
 	switch p.curToken.Type {
 	case token.LET:
 		return p.parseLetStatement()
+	case token.RETURN:
+		return p.parseReturnStatement()
 	default:
 		return nil // If the token type is not recognized, return nil.
 	}
+}
+
+func (p *Parser) parseReturnStatement() *ast.ReturnStatement {
+	// Create a new ReturnStatement node with the current token (which should be 'return').
+	stmt := &ast.ReturnStatement{Token: p.curToken}
+
+	// Move to the next token in preparation for parsing the expression that follows the 'return' keyword.
+	p.nextToken()
+
+	// TODO: Currently, we are skipping over the expression until we find a semicolon.
+	// In the future, this will be replaced with actual expression parsing.
+	for !p.curTokenIs(token.SEMICOLON) {
+		p.nextToken()
+	}
+
+	// Return the constructed ReturnStatement node.
+	return stmt
 }
 
 func (p *Parser) parseLetStatement() *ast.LetStatement {
