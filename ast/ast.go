@@ -1,6 +1,6 @@
 package ast
 
-import "go/token"
+import "interpreter/token"
 
 // Node is the base interface that all nodes in our AST (Abstract Syntax Tree) must implement.
 // It requires a TokenLiteral() method that returns the literal value of the token associated with the node.
